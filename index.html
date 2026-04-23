@@ -1,1 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrition Manager — Track what you eat, effortlessly</title>
+  <meta name="description" content="Nutrition Manager helps you track meals, manage your fridge, build shopping lists, and understand your nutrition — all in one clean app.">
+  <link rel="icon" type="image/png" href="icon_512.png">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #4CAF50;
+      --green-dark: #388E3C;
+      --green-light: #E8F5E9;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --bg: #FAFBF9;
+      --card-bg: #fff;
+      --radius: 16px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(250, 251, 249, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .nav-brand img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+    .nav-brand span {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .nav-cta {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--green-dark); }
+
+    /* ---- HERO ---- */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 140px 24px 80px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .hero h1 .accent { color: var(--green); }
+    .hero p {
+      max-width: 580px;
+      margin: 0 auto 36px;
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      padding: 16px 40px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero-cta:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .hero-sub {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    /* ---- FEATURES ---- */
+    .features {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: box-shadow 0.25s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--green-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ---- SCREENSHOTS ---- */
+    .screenshots {
+      background: var(--green-light);
+      padding: 80px 24px;
+    }
+    .screenshots h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+    }
+    .screenshots-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .screenshot-slot {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+    .screenshot-slot img {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      background: #e0e0e0;
+    }
+    .screenshot-slot .caption {
+      padding: 14px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+
+    /* ---- CTA SECTION ---- */
+    .cta-section {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .cta-section p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.85rem;
+      color: #aaa;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 600px) {
+      .screenshots-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero { padding: 120px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <img src="icon_512.png" alt="Nutrition Manager icon">
+        <span>Nutrition Manager</span>
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.myapp.shoppinglist" class="nav-cta" target="_blank" rel="noopener">Get the App</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Track what you eat,<br><span class="accent">effortlessly</span></h1>
+    <p>Manage your fridge, plan your shopping, log meals, and get clear nutritional insights &mdash; all in one beautifully simple app.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.myapp.shoppinglist" class="hero-cta" target="_blank" rel="noopener">Download Free</a>
+    <div class="hero-sub">Free &middot; Android</div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <h2>Everything you need in one place</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#129482;</div>
+        <h3>Fridge Tracker</h3>
+        <p>Organize your fridge into custom shelves. See what you have, what's expiring, and reduce food waste.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128722;</div>
+        <h3>Smart Shopping Lists</h3>
+        <p>Build shopping lists with barcode scanning. Add products instantly from Open Food Facts' database.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#127858;</div>
+        <h3>Meal Logging</h3>
+        <p>Log breakfast, lunch, dinner and snacks. Track portions and see nutritional breakdowns per meal.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128202;</div>
+        <h3>Nutrition Stats</h3>
+        <p>Visualize your macros, calories and micronutrients with clear charts and color-coded indicators.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section class="screenshots">
+    <h2>A look inside the app</h2>
+    <div class="screenshots-grid">
+      <div class="screenshot-slot">
+        <img src="1.jpeg" alt="Fridge view showing shelves and expiry dates">
+        <div class="caption">Fridge</div>
+      </div>
+      <div class="screenshot-slot">
+        <img src="2.jpeg" alt="Shopping list with barcode scanning">
+        <div class="caption">Shopping List</div>
+      </div>
+      <div class="screenshot-slot">
+        <img src="3.jpeg" alt="Meal logging with nutritional details">
+        <div class="caption">Meals &amp; Nutrition</div>
+      </div>
+      <div class="screenshot-slot">
+        <img src="4.jpeg" alt="Statistics charts and macro breakdowns">
+        <div class="caption">Statistics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="cta-section" id="download">
+    <h2>Ready to start?</h2>
+    <p>Download Nutrition Manager for free on Android and take control of what you eat.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.myapp.shoppinglist" class="hero-cta" target="_blank" rel="noopener">Download on Android</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 Nutrition Manager. Built with care for your health.
+  </footer>
+
+</body>
+</html>
 
