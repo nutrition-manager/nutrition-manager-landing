@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+  <html>
+  <body>
+    <h2>Authorization code:</h2>
+    <p id="code" style="font-family:monospace; font-size:1.2em;"></p>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      document.getElementById('code').textContent = params.get('code') || 'nessun codice trovato';
+    </script>
+  </body>
+  </html>
