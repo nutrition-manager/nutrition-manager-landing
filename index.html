@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nutrition Manager — Track what you eat, effortlessly</title>
-  <meta name="description" content="Nutrition Manager helps you track meals, manage your fridge, build shopping lists, and understand your nutrition — all in one clean app.">
+  <meta name="description" content="Nutrition Manager helps you track meals, manage your fridge, build shopping lists, understand your nutrition, get AI-powered recipe ideas from your fridge, and share your meals — all in one clean app.">
   <link rel="icon" type="image/png" href="icon_512.png">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -62,6 +62,21 @@
     .nav-brand span {
       font-weight: 700;
       font-size: 1.1rem;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lang-select {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
     }
     .nav-cta {
       background: var(--green);
@@ -249,80 +264,338 @@
         <img src="icon_512.png" alt="Nutrition Manager icon">
         <span>Nutrition Manager</span>
       </a>
-      <a href="https://play.google.com/store/apps/details?id=com.myapp.shoppinglist" class="nav-cta" target="_blank" rel="noopener">Get the App</a>
+      <div class="nav-actions">
+        <select class="lang-select" id="lang-select" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="it">IT</option>
+          <option value="fr">FR</option>
+          <option value="de">DE</option>
+          <option value="es">ES</option>
+        </select>
+        <a href="https://play.google.com/store/apps/details?id=com.myapp.shoppinglist" class="nav-cta" target="_blank" rel="noopener" data-i18n="navCta">Get the App</a>
+      </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <h1>Track what you eat,<br><span class="accent">effortlessly</span></h1>
-    <p>Manage your fridge, plan your shopping, log meals, and get clear nutritional insights &mdash; all in one beautifully simple app.</p>
-    <a href="https://play.google.com/store/apps/details?id=com.myapp.shoppinglist" class="hero-cta" target="_blank" rel="noopener">Download Free</a>
-    <div class="hero-sub">Free &middot; Android</div>
+    <h1><span data-i18n="heroTitleMain">Track what you eat,</span><br><span class="accent" data-i18n="heroTitleAccent">effortlessly</span></h1>
+    <p data-i18n="heroP">Manage your fridge, plan your shopping, log meals, get AI-powered recipe ideas from what you have, and share it all &mdash; in one beautifully simple app.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.myapp.shoppinglist" class="hero-cta" target="_blank" rel="noopener" data-i18n="heroCta">Download Free</a>
+    <div class="hero-sub" data-i18n="heroSub">Free &middot; Android</div>
   </section>
 
   <!-- FEATURES -->
   <section class="features">
-    <h2>Everything you need in one place</h2>
+    <h2 data-i18n="featuresH2">Everything you need in one place</h2>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">&#129482;</div>
-        <h3>Fridge Tracker</h3>
-        <p>Organize your fridge into custom shelves. See what you have, what's expiring, and reduce food waste.</p>
+        <h3 data-i18n="f1Title">Fridge Tracker</h3>
+        <p data-i18n="f1Desc">Organize your fridge into custom shelves. See what you have, what's expiring, and reduce food waste.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">&#128722;</div>
-        <h3>Smart Shopping Lists</h3>
-        <p>Build shopping lists with barcode scanning. Add products instantly from Open Food Facts' database.</p>
+        <h3 data-i18n="f2Title">Smart Shopping Lists</h3>
+        <p data-i18n="f2Desc">Build shopping lists with barcode scanning. Add products instantly from Open Food Facts' database.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">&#127858;</div>
-        <h3>Meal Logging</h3>
-        <p>Log breakfast, lunch, dinner and snacks. Track portions and see nutritional breakdowns per meal.</p>
+        <h3 data-i18n="f3Title">Meal Logging</h3>
+        <p data-i18n="f3Desc">Log breakfast, lunch, dinner and snacks. Track portions and see nutritional breakdowns per meal.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">&#128202;</div>
-        <h3>Nutrition Stats</h3>
-        <p>Visualize your macros, calories and micronutrients with clear charts and color-coded indicators.</p>
+        <h3 data-i18n="f4Title">Nutrition Stats</h3>
+        <p data-i18n="f4Desc">Visualize your macros, calories and micronutrients with clear charts and color-coded indicators.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#129302;</div>
+        <h3 data-i18n="f5Title">AI Recipe Assistant</h3>
+        <p data-i18n="f5Desc">Get recipe ideas generated from what's actually in your fridge — no food wasted, no extra shopping. First 10 requests free.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128228;</div>
+        <h3 data-i18n="f6Title">Share Your Meals</h3>
+        <p data-i18n="f6Desc">Turn any recipe or meal into a beautiful card with ingredients and macros, ready to share on social media.</p>
       </div>
     </div>
   </section>
 
   <!-- SCREENSHOTS -->
   <section class="screenshots">
-    <h2>A look inside the app</h2>
+    <h2 data-i18n="screenshotsH2">A look inside the app</h2>
     <div class="screenshots-grid">
       <div class="screenshot-slot">
-        <img src="1.jpeg" alt="Fridge view showing shelves and expiry dates">
-        <div class="caption">Fridge</div>
+        <img src="home-fridge.jpg" alt="Fridge view showing shelves and expiry dates">
+        <div class="caption" data-i18n="capFridge">Fridge</div>
       </div>
       <div class="screenshot-slot">
-        <img src="2.jpeg" alt="Shopping list with barcode scanning">
-        <div class="caption">Shopping List</div>
+        <img src="ai-recipe.jpg" alt="AI-generated recipe suggestion from fridge ingredients">
+        <div class="caption" data-i18n="capAI">AI Recipe Assistant</div>
       </div>
       <div class="screenshot-slot">
-        <img src="3.jpeg" alt="Meal logging with nutritional details">
-        <div class="caption">Meals &amp; Nutrition</div>
+        <img src="meals.jpg" alt="Meal logging with nutritional details">
+        <div class="caption" data-i18n="capMeals">Meals &amp; Nutrition</div>
       </div>
       <div class="screenshot-slot">
-        <img src="7.jpeg" alt="Statistics charts and macro breakdowns">
-        <div class="caption">Statistics</div>
+        <img src="statistics.jpg" alt="Statistics charts and macro breakdowns">
+        <div class="caption" data-i18n="capStats">Statistics</div>
+      </div>
+      <div class="screenshot-slot">
+        <img src="product-detail.jpg" alt="Product detail with full nutritional breakdown">
+        <div class="caption" data-i18n="capProduct">Product Detail</div>
+      </div>
+      <div class="screenshot-slot">
+        <img src="search.jpg" alt="Searching and adding products from Open Food Facts">
+        <div class="caption" data-i18n="capSearch">Search Products</div>
+      </div>
+      <div class="screenshot-slot">
+        <img src="recipe-builder.jpg" alt="Building a custom recipe from ingredients">
+        <div class="caption" data-i18n="capBuilder">Recipe Builder</div>
+      </div>
+      <div class="screenshot-slot">
+        <img src="share-card.jpg" alt="Shareable card with recipe ingredients and macros">
+        <div class="caption" data-i18n="capShare">Share Your Meals</div>
       </div>
     </div>
   </section>
 
   <!-- DOWNLOAD -->
   <section class="cta-section" id="download">
-    <h2>Ready to start?</h2>
-    <p>Download Nutrition Manager for free on Android and take control of what you eat.</p>
-    <a href="https://play.google.com/store/apps/details?id=com.myapp.shoppinglist" class="hero-cta" target="_blank" rel="noopener">Download on Android</a>
+    <h2 data-i18n="ctaH2">Ready to start?</h2>
+    <p data-i18n="ctaP">Download Nutrition Manager for free on Android and take control of what you eat.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.myapp.shoppinglist" class="hero-cta" target="_blank" rel="noopener" data-i18n="ctaButton">Download on Google Play</a>
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  <footer data-i18n="footer">
     &copy; 2026 Nutrition Manager. Built with care for your health.
   </footer>
 
+  <script>
+    var translations = {
+      en: {
+        titleTag: "Nutrition Manager — Track what you eat, effortlessly",
+        metaDescription: "Nutrition Manager helps you track meals, manage your fridge, build shopping lists, understand your nutrition, get AI-powered recipe ideas from your fridge, and share your meals — all in one clean app.",
+        navCta: "Get the App",
+        heroTitleMain: "Track what you eat,",
+        heroTitleAccent: "effortlessly",
+        heroP: "Manage your fridge, plan your shopping, log meals, get AI-powered recipe ideas from what you have, and share it all — in one beautifully simple app.",
+        heroCta: "Download Free",
+        heroSub: "Free · Android",
+        featuresH2: "Everything you need in one place",
+        f1Title: "Fridge Tracker",
+        f1Desc: "Organize your fridge into custom shelves. See what you have, what's expiring, and reduce food waste.",
+        f2Title: "Smart Shopping Lists",
+        f2Desc: "Build shopping lists with barcode scanning. Add products instantly from Open Food Facts' database.",
+        f3Title: "Meal Logging",
+        f3Desc: "Log breakfast, lunch, dinner and snacks. Track portions and see nutritional breakdowns per meal.",
+        f4Title: "Nutrition Stats",
+        f4Desc: "Visualize your macros, calories and micronutrients with clear charts and color-coded indicators.",
+        f5Title: "AI Recipe Assistant",
+        f5Desc: "Get recipe ideas generated from what's actually in your fridge — no food wasted, no extra shopping. First 10 requests free.",
+        f6Title: "Share Your Meals",
+        f6Desc: "Turn any recipe or meal into a beautiful card with ingredients and macros, ready to share on social media.",
+        screenshotsH2: "A look inside the app",
+        capFridge: "Fridge",
+        capAI: "AI Recipe Assistant",
+        capMeals: "Meals & Nutrition",
+        capStats: "Statistics",
+        capProduct: "Product Detail",
+        capSearch: "Search Products",
+        capBuilder: "Recipe Builder",
+        capShare: "Share Your Meals",
+        ctaH2: "Ready to start?",
+        ctaP: "Download Nutrition Manager for free on Android and take control of what you eat.",
+        ctaButton: "Download on Google Play",
+        footer: "© 2026 Nutrition Manager. Built with care for your health."
+      },
+      it: {
+        titleTag: "Nutrition Manager — Traccia cosa mangi, senza sforzo",
+        metaDescription: "Nutrition Manager ti aiuta a registrare i pasti, gestire il frigo, creare liste della spesa, capire i tuoi valori nutrizionali, ricevere idee ricetta dall'IA e condividere i tuoi piatti — tutto in un'unica app curata.",
+        navCta: "Scarica l'app",
+        heroTitleMain: "Traccia cosa mangi,",
+        heroTitleAccent: "senza sforzo",
+        heroP: "Gestisci il frigo, pianifica la spesa, registra i pasti, ricevi idee ricetta dall'IA in base a quello che hai e condividi tutto — in un'unica app semplice e curata.",
+        heroCta: "Scarica gratis",
+        heroSub: "Gratis · Android",
+        featuresH2: "Tutto quello che ti serve, in un'unica app",
+        f1Title: "Gestione frigo",
+        f1Desc: "Organizza il frigo in scaffali personalizzati. Vedi cosa hai, cosa sta per scadere, e riduci gli sprechi.",
+        f2Title: "Lista della spesa intelligente",
+        f2Desc: "Crea liste della spesa con lo scanner del codice a barre. Aggiungi prodotti all'istante dal database di Open Food Facts.",
+        f3Title: "Registro pasti",
+        f3Desc: "Registra colazione, pranzo, cena e spuntini. Traccia le porzioni e vedi il dettaglio nutrizionale di ogni pasto.",
+        f4Title: "Statistiche nutrizionali",
+        f4Desc: "Visualizza macro, calorie e micronutrienti con grafici chiari e indicatori a colori.",
+        f5Title: "Assistente ricette IA",
+        f5Desc: "Ricevi idee ricetta generate da quello che hai davvero in frigo — niente sprechi, niente spesa extra. Prime 10 richieste gratis.",
+        f6Title: "Condividi i tuoi piatti",
+        f6Desc: "Trasforma qualsiasi ricetta o pasto in una card con ingredienti e macro, pronta da condividere sui social.",
+        screenshotsH2: "Uno sguardo dentro l'app",
+        capFridge: "Frigo",
+        capAI: "Assistente IA",
+        capMeals: "Pasti e nutrizione",
+        capStats: "Statistiche",
+        capProduct: "Dettaglio prodotto",
+        capSearch: "Ricerca prodotti",
+        capBuilder: "Crea ricetta",
+        capShare: "Condividi i pasti",
+        ctaH2: "Pronto a iniziare?",
+        ctaP: "Scarica Nutrition Manager gratis su Android e prendi il controllo di quello che mangi.",
+        ctaButton: "Scarica su Google Play",
+        footer: "© 2026 Nutrition Manager. Costruita con cura per la tua salute."
+      },
+      fr: {
+        titleTag: "Nutrition Manager — Suis ce que tu manges, sans effort",
+        metaDescription: "Nutrition Manager t'aide à suivre tes repas, gérer ton frigo, créer des listes de courses, comprendre ta nutrition, recevoir des idées de recettes par IA et partager tes plats — le tout dans une seule appli soignée.",
+        navCta: "Télécharger l'appli",
+        heroTitleMain: "Suis ce que tu manges,",
+        heroTitleAccent: "sans effort",
+        heroP: "Gère ton frigo, planifie tes courses, enregistre tes repas, reçois des idées de recettes par IA à partir de ce que tu as, et partage le tout — dans une seule appli simple et soignée.",
+        heroCta: "Télécharger gratuitement",
+        heroSub: "Gratuit · Android",
+        featuresH2: "Tout ce dont tu as besoin, au même endroit",
+        f1Title: "Suivi du frigo",
+        f1Desc: "Organise ton frigo en étagères personnalisées. Vois ce que tu as, ce qui périme bientôt, et réduis le gaspillage.",
+        f2Title: "Listes de courses intelligentes",
+        f2Desc: "Crée des listes de courses avec le scanner de codes-barres. Ajoute des produits instantanément depuis la base Open Food Facts.",
+        f3Title: "Suivi des repas",
+        f3Desc: "Enregistre petit-déjeuner, déjeuner, dîner et collations. Suis les portions et le détail nutritionnel de chaque repas.",
+        f4Title: "Statistiques nutritionnelles",
+        f4Desc: "Visualise tes macros, calories et micronutriments avec des graphiques clairs et des indicateurs colorés.",
+        f5Title: "Assistant recettes IA",
+        f5Desc: "Reçois des idées de recettes générées à partir de ce qu'il y a vraiment dans ton frigo — zéro gaspillage, zéro courses en plus. 10 premières requêtes gratuites.",
+        f6Title: "Partage tes plats",
+        f6Desc: "Transforme n'importe quelle recette ou repas en une belle carte avec ingrédients et macros, prête à partager sur les réseaux sociaux.",
+        screenshotsH2: "Un aperçu de l'appli",
+        capFridge: "Frigo",
+        capAI: "Assistant IA",
+        capMeals: "Repas et nutrition",
+        capStats: "Statistiques",
+        capProduct: "Détail produit",
+        capSearch: "Recherche de produits",
+        capBuilder: "Créer une recette",
+        capShare: "Partage tes plats",
+        ctaH2: "Prêt à commencer ?",
+        ctaP: "Télécharge Nutrition Manager gratuitement sur Android et prends le contrôle de ce que tu manges.",
+        ctaButton: "Télécharger sur Google Play",
+        footer: "© 2026 Nutrition Manager. Conçue avec soin pour ta santé."
+      },
+      de: {
+        titleTag: "Nutrition Manager — Behalte im Blick, was du isst, mühelos",
+        metaDescription: "Nutrition Manager hilft dir, Mahlzeiten zu protokollieren, deinen Kühlschrank zu verwalten, Einkaufslisten zu erstellen, deine Ernährung zu verstehen, KI-Rezeptideen zu erhalten und Mahlzeiten zu teilen — alles in einer übersichtlichen App.",
+        navCta: "App holen",
+        heroTitleMain: "Behalte im Blick, was du isst,",
+        heroTitleAccent: "mühelos",
+        heroP: "Verwalte deinen Kühlschrank, plane deine Einkäufe, protokolliere Mahlzeiten, erhalte KI-Rezeptideen aus dem, was du hast, und teile alles — in einer einzigen, wunderbar einfachen App.",
+        heroCta: "Kostenlos herunterladen",
+        heroSub: "Kostenlos · Android",
+        featuresH2: "Alles, was du brauchst, an einem Ort",
+        f1Title: "Kühlschrank-Tracker",
+        f1Desc: "Organisiere deinen Kühlschrank in eigenen Fächern. Sieh, was du hast, was bald abläuft, und reduziere Lebensmittelverschwendung.",
+        f2Title: "Intelligente Einkaufslisten",
+        f2Desc: "Erstelle Einkaufslisten mit Barcode-Scanner. Füge Produkte sofort aus der Open-Food-Facts-Datenbank hinzu.",
+        f3Title: "Mahlzeiten-Protokoll",
+        f3Desc: "Protokolliere Frühstück, Mittag-, Abendessen und Snacks. Behalte Portionen und Nährwerte jeder Mahlzeit im Blick.",
+        f4Title: "Ernährungsstatistiken",
+        f4Desc: "Visualisiere deine Makros, Kalorien und Mikronährstoffe mit klaren Diagrammen und farbcodierten Anzeigen.",
+        f5Title: "KI-Rezeptassistent",
+        f5Desc: "Erhalte Rezeptideen aus dem, was wirklich in deinem Kühlschrank steckt — keine Verschwendung, kein Extra-Einkauf. Erste 10 Anfragen kostenlos.",
+        f6Title: "Teile deine Mahlzeiten",
+        f6Desc: "Verwandle jedes Rezept oder jede Mahlzeit in eine schöne Karte mit Zutaten und Makros, bereit zum Teilen in sozialen Medien.",
+        screenshotsH2: "Ein Blick in die App",
+        capFridge: "Kühlschrank",
+        capAI: "KI-Assistent",
+        capMeals: "Mahlzeiten & Nährwerte",
+        capStats: "Statistiken",
+        capProduct: "Produktdetail",
+        capSearch: "Produktsuche",
+        capBuilder: "Rezept erstellen",
+        capShare: "Mahlzeiten teilen",
+        ctaH2: "Bereit loszulegen?",
+        ctaP: "Lade Nutrition Manager kostenlos für Android herunter und übernimm die Kontrolle über das, was du isst.",
+        ctaButton: "Bei Google Play herunterladen",
+        footer: "© 2026 Nutrition Manager. Mit Sorgfalt für deine Gesundheit gebaut."
+      },
+      es: {
+        titleTag: "Nutrition Manager — Registra lo que comes, sin esfuerzo",
+        metaDescription: "Nutrition Manager te ayuda a registrar comidas, gestionar tu nevera, crear listas de la compra, entender tu nutrición, recibir ideas de recetas con IA y compartir tus platos — todo en una sola app cuidada.",
+        navCta: "Descargar la app",
+        heroTitleMain: "Registra lo que comes,",
+        heroTitleAccent: "sin esfuerzo",
+        heroP: "Gestiona tu nevera, planifica la compra, registra comidas, recibe ideas de recetas con IA a partir de lo que tienes, y comparte todo — en una sola app simple y cuidada.",
+        heroCta: "Descargar gratis",
+        heroSub: "Gratis · Android",
+        featuresH2: "Todo lo que necesitas, en un solo lugar",
+        f1Title: "Control de la nevera",
+        f1Desc: "Organiza tu nevera en estantes personalizados. Ve lo que tienes, lo que está por caducar, y reduce el desperdicio.",
+        f2Title: "Listas de la compra inteligentes",
+        f2Desc: "Crea listas de la compra con el escáner de código de barras. Añade productos al instante desde la base de datos de Open Food Facts.",
+        f3Title: "Registro de comidas",
+        f3Desc: "Registra desayuno, comida, cena y snacks. Controla las porciones y el detalle nutricional de cada comida.",
+        f4Title: "Estadísticas nutricionales",
+        f4Desc: "Visualiza tus macros, calorías y micronutrientes con gráficos claros e indicadores por colores.",
+        f5Title: "Asistente de recetas IA",
+        f5Desc: "Recibe ideas de recetas generadas a partir de lo que realmente tienes en la nevera — sin desperdicio, sin compra extra. Primeras 10 solicitudes gratis.",
+        f6Title: "Comparte tus platos",
+        f6Desc: "Convierte cualquier receta o comida en una tarjeta con ingredientes y macros, lista para compartir en redes sociales.",
+        screenshotsH2: "Un vistazo dentro de la app",
+        capFridge: "Nevera",
+        capAI: "Asistente IA",
+        capMeals: "Comidas y nutrición",
+        capStats: "Estadísticas",
+        capProduct: "Detalle del producto",
+        capSearch: "Buscar productos",
+        capBuilder: "Crear receta",
+        capShare: "Comparte tus platos",
+        ctaH2: "¿Listo para empezar?",
+        ctaP: "Descarga Nutrition Manager gratis en Android y toma el control de lo que comes.",
+        ctaButton: "Descargar en Google Play",
+        footer: "© 2026 Nutrition Manager. Hecha con cuidado para tu salud."
+      }
+    };
+
+    var SUPPORTED = ['it', 'en', 'fr', 'de', 'es'];
+
+    function detectLang() {
+      var saved = null;
+      try { saved = localStorage.getItem('nm_lang'); } catch (e) {}
+      if (saved && SUPPORTED.indexOf(saved) !== -1) return saved;
+      var navLang = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+      var code = navLang.slice(0, 2).toLowerCase();
+      return SUPPORTED.indexOf(code) !== -1 ? code : 'en';
+    }
+
+    function applyLang(lang) {
+      var t = translations[lang] || translations.en;
+      document.documentElement.lang = lang;
+      document.title = t.titleTag;
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', t.metaDescription);
+      var nodes = document.querySelectorAll('[data-i18n]');
+      for (var i = 0; i < nodes.length; i++) {
+        var key = nodes[i].getAttribute('data-i18n');
+        if (t[key]) nodes[i].textContent = t[key];
+      }
+      var select = document.getElementById('lang-select');
+      if (select) select.value = lang;
+    }
+
+    function setLang(lang) {
+      try { localStorage.setItem('nm_lang', lang); } catch (e) {}
+      applyLang(lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      applyLang(detectLang());
+      var select = document.getElementById('lang-select');
+      if (select) {
+        select.addEventListener('change', function (e) { setLang(e.target.value); });
+      }
+    });
+  </script>
+
 </body>
 </html>
-
